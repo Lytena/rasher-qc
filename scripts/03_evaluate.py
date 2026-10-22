@@ -22,6 +22,7 @@ Usage: python scripts/03_evaluate.py --data data/<dataset> [--imgsz 416]
 from __future__ import annotations
 
 import pickle
+import sys
 import time
 
 import numpy as np
@@ -126,7 +127,8 @@ for name in ("yolo_pretrained", "yolo_scratch"):
     # cross-check with the Ultralytics validator on the test split
     try:
         r = det.model.val(data=str(ds.yolo_yaml), split="test", imgsz=a.imgsz, conf=0.001, iou=0.6,
-                          device=a.device, verbose=False, plots=False, batch=16)
+                          device=a.device, verbose=False, plots=False, batch=16,
+                          workers=0 if sys.platform == "win32" else 2)
         m["ultralytics_test"] = {"map50": float(r.box.map50), "map50_95": float(r.box.map),
                                  "ap50": [float(v) for v in r.box.ap50]}
     except Exception as exc:  # noqa: BLE001 - cross-check is informative only

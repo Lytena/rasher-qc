@@ -74,7 +74,9 @@ def read_image(path: str | Path) -> np.ndarray:
             if im.mode not in ("L", "RGB", "RGBA"):
                 im = im.convert("RGBA" if "transparency" in im.info else "RGB")
             arr = np.asarray(im)
-    except (UnidentifiedImageError, OSError) as exc:
+    except (UnidentifiedImageError, OSError, ImportError, ValueError) as exc:
+        # ImportError: Ultralytics patches Image.open to try optional HEIF
+        # support for unrecognised files; any decode failure = invalid input.
         raise InvalidInputError(f"Unreadable image {path}: {exc}") from exc
     return arr.astype(np.uint8, copy=False)
 

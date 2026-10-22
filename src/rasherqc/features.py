@@ -32,6 +32,7 @@ pyramid). Tests check both produce closely matching features.
 
 from __future__ import annotations
 
+import multiprocessing
 from concurrent.futures import ProcessPoolExecutor
 
 import numpy as np
@@ -236,7 +237,9 @@ def extract_batch(images: list[np.ndarray], mode: str = "fast", n_jobs: int = 1)
     Returns:
         (N, n_features) float64 array.
     """
-    if n_jobs <= 1:
+    # Process pools need the "fork" start method when called from plain scripts;
+    # on Windows/macOS ("spawn") the scripts would be re-imported, so run serially.
+    if n_jobs <= 1 or multiprocessing.get_start_method(allow_none=False) != "fork":
         return np.stack([extract_features(x, mode) for x in images])
     with ProcessPoolExecutor(n_jobs) as ex:
         return np.stack(list(ex.map(_extract_one, ((x, mode) for x in images), chunksize=8)))

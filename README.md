@@ -55,6 +55,8 @@ Everything is scripted; each step writes JSON tables and PNG figures to `results
 DEVICE=0 ./run_all.sh data/pork-rasher   # real dataset on GPU 0
 ```
 
+**Windows + NVIDIA GPU (one click):** put the Roboflow zip in `Downloads`, then double-click `run_on_windows_gpu.bat`. It creates a virtual environment, installs CUDA PyTorch and the project, and runs `run_pipeline.py --device 0` (≈30–60 min on an RTX 4070). Any OS: `python run_pipeline.py --zip <export.zip> --device 0` (or `--device cpu`).
+
 or step by step:
 
 | step | script | produces |

@@ -65,8 +65,14 @@ def train(
     Returns:
         Path to the best checkpoint (``weights/best.pt``).
     """
+    import sys
+
     from ultralytics import YOLO
 
+    if sys.platform == "win32":
+        # Windows starts data-loader workers by re-importing the calling script,
+        # which re-runs it; in-process loading avoids this (GPU still dominates).
+        workers = 0
     model = YOLO(str(weights) if weights is not None else "yolov8n.yaml")
     args = dict(
         data=str(data_yaml), project=str(Path(out_dir).resolve()), name=name, exist_ok=True,
