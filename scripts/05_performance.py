@@ -117,6 +117,20 @@ if w.is_file():
     out["detector"]["throughput_img_per_s_by_batch"] = batch_tab
     out["detector"]["inference_ms_by_threads"] = thr
     out["detector"]["peak_rss_mb"] = performance.peak_rss_mb()
+    # When the main run is on a GPU, also time the CPU of the same machine:
+    # a production-line PC may have no GPU, so both answer the real-time question.
+    if a.device != "cpu":
+        cpu_det = Detector(w, device="cpu")
+        cpu_tab = {}
+        for s in a.sizes:
+            cpu_det.imgsz = s
+            cpu_tab[s] = cpu_det.latency(imgs[0], n=15, warmup=3)
+            print(f"CPU imgsz {s}: {cpu_tab[s]['mean_ms']:.1f} ms")
+        out["detector"]["cpu_latency_by_imgsz"] = cpu_tab
+    import platform
+    out["hardware"]["machine"] = {"processor": platform.processor(), "platform": platform.platform(),
+                                  "cpu_count": __import__("os").cpu_count(),
+                                  "gpu": torch.cuda.get_device_name(0) if torch.cuda.is_available() else None}
     print("batch throughput:", batch_tab, "threads:", thr)
 
     # figures: latency vs size, roofline

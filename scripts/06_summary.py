@@ -106,7 +106,8 @@ if rb:
 
 if pf:
     h = pf["hardware"]
-    L.append(f"## Performance (CPU, {h['torch_threads']} threads)\n")
+    mach = h.get("machine", {})
+    L.append(f"## Performance ({mach.get('gpu') or 'CPU'}; {mach.get('processor') or ''}, {mach.get('cpu_count') or h['torch_threads']} logical CPUs)\n")
     L.append(f"Measured attainable compute {h['peak_gflops']:.1f} GFLOP/s, memory bandwidth {h['bandwidth_gbs']:.1f} GB/s "
              f"-> ridge point {h['peak_gflops']/h['bandwidth_gbs']:.1f} FLOP/byte. Line-rate budget {pf['budget_ms']:.0f} ms/tray "
              f"({pf['line_rate_trays_per_min']:.0f} trays/min).\n")
@@ -124,6 +125,9 @@ if pf:
             L.append(f"| {s} | {lt['mean_ms']:.1f} | {lt['p95_ms']:.1f} | {lt['inf_ms']:.1f} | {lt['post_ms']:.1f} | {v['conv_gflops']:.2f} | "
                      f"{v['attained_gflops']:.1f} | {v['map50']:.3f} | {v['fail_recall']:.3f} | {v['false_reject_rate']:.3f} |")
         L.append("")
+        if "cpu_latency_by_imgsz" in d:
+            L.append("CPU latency on the same machine (ms, mean / p95): " + ", ".join(
+                f"{k}px {v['mean_ms']:.1f} / {v['p95_ms']:.1f}" for k, v in d["cpu_latency_by_imgsz"].items()) + "\n")
         L.append("Throughput vs batch (img/s): " + ", ".join(f"batch {k}: {v:.1f}" for k, v in d["throughput_img_per_s_by_batch"].items()))
         L.append("; inference ms vs threads: " + ", ".join(f"{k} thread(s): {v:.1f}" for k, v in d["inference_ms_by_threads"].items()) + "\n")
     b = pf["baseline"]
