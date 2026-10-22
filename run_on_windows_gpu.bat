@@ -2,7 +2,7 @@
 REM One-click setup + full pipeline on a Windows laptop with an NVIDIA GPU.
 REM Usage: double-click, or from a terminal in this folder:
 REM     run_on_windows_gpu.bat "C:\Users\you\Downloads\Pork_Rasher_Error-Packaging-_v4i_yolov8.zip"
-REM Needs Python 3.10-3.12 on PATH (python.org installer, tick "Add to PATH") and a recent NVIDIA driver.
+REM Needs Python 3.10-3.13 on PATH (python.org installer, tick "Add to PATH") and a recent NVIDIA driver.
 setlocal
 cd /d "%~dp0"
 
