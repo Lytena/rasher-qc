@@ -17,11 +17,24 @@ if not exist .venv (
 )
 call .venv\Scripts\activate.bat
 
+python -c "import sys,struct; print('Python', sys.version.split()[0], struct.calcsize('P')*8, 'bit')"
+python -c "import struct,sys; sys.exit(0 if struct.calcsize('P')==8 else 1)" || (
+  echo *** This is 32-bit Python. PyTorch needs 64-bit Python: install the 64-bit version from python.org. ***
+  goto :err
+)
+
 echo === Installing PyTorch with CUDA (about 2.5 GB, first run only) ===
 python -m pip install --upgrade pip >nul
-python -c "import torch,sys; sys.exit(0 if torch.cuda.is_available() else 1)" 2>nul || (
-  pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124 || goto :err
+python -c "import torch,sys; sys.exit(0 if torch.cuda.is_available() else 1)" 2>nul && goto :torch_ok
+REM Newest CUDA build first (supports the newest Python versions); older ones as fallback.
+for %%C in (cu128 cu126 cu124) do (
+  echo --- trying PyTorch build %%C ---
+  pip install --upgrade torch torchvision --index-url https://download.pytorch.org/whl/%%C && goto :torch_ok
 )
+echo *** No CUDA PyTorch build found for this Python version. Install Python 3.12 (64-bit) from python.org,
+echo *** delete the .venv folder here, and run this script again. ***
+goto :err
+:torch_ok
 echo === Installing project ===
 pip install -e ".[dev]" || goto :err
 
