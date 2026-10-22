@@ -52,8 +52,18 @@ out: dict = {"line_rate_trays_per_min": config.LINE_RATE_TRAYS_PER_MIN, "budget_
 import torch  # noqa: E402
 
 n_threads = torch.get_num_threads()
+bw_np = performance.memory_bandwidth_gbs()
+_x = torch.ones(64 * 1024 * 1024 // 2)  # 128 MB float32
+_y = torch.empty_like(_x)
+_y.copy_(_x)
+_t0 = time.perf_counter()
+for _ in range(5):
+    _y.copy_(_x)
+bw_torch = 2 * _x.numel() * 4 / ((time.perf_counter() - _t0) / 5) / 1e9
 out["hardware"] = {"torch_threads": n_threads, "peak_gflops": performance.peak_compute_gflops(1024),
-                   "bandwidth_gbs": performance.memory_bandwidth_gbs()}
+                   "bandwidth_gbs": max(bw_np, bw_torch), "bandwidth_numpy_1thread_gbs": bw_np,
+                   "bandwidth_torch_multithread_gbs": bw_torch}
+del _x, _y
 print("hardware:", out["hardware"])
 
 # ------------------------------------------------------------ detector
@@ -110,9 +120,12 @@ if w.is_file():
         t0 = time.perf_counter()
         det.predict(imgs[:32], batch=b)
         batch_tab[b] = 32 / (time.perf_counter() - t0)
-    for nt in sorted({1, n_threads}):
+    # thread scaling only means something for CPU inference
+    thr_det = det if a.device == "cpu" else Detector(w, device="cpu")
+    thr_det.imgsz = config.DEFAULT_IMGSZ
+    for nt in sorted({1, 2, 4, n_threads}):
         torch.set_num_threads(nt)
-        thr[nt] = det.latency(imgs[0], n=20)["inf_ms"]
+        thr[nt] = thr_det.latency(imgs[0], n=15, warmup=3)["inf_ms"]
     torch.set_num_threads(n_threads)
     out["detector"]["throughput_img_per_s_by_batch"] = batch_tab
     out["detector"]["inference_ms_by_threads"] = thr
@@ -127,6 +140,12 @@ if w.is_file():
             cpu_tab[s] = cpu_det.latency(imgs[0], n=15, warmup=3)
             print(f"CPU imgsz {s}: {cpu_tab[s]['mean_ms']:.1f} ms")
         out["detector"]["cpu_latency_by_imgsz"] = cpu_tab
+    # Roofline uses CPU numbers (the peaks are measured on the CPU), so the
+    # attained rate is also taken from CPU inference time.
+    cpu_inf = (out["detector"]["cpu_latency_by_imgsz"][config.DEFAULT_IMGSZ]["inf_ms"] if a.device != "cpu"
+               else sizes[config.DEFAULT_IMGSZ]["latency"]["inf_ms"])
+    out["detector"]["cpu_attained_gflops"] = out["detector"]["conv_gflops_ours"] / (cpu_inf / 1e3)
+    out["detector"]["cpu_inf_ms_default"] = cpu_inf
     import platform
     out["hardware"]["machine"] = {"processor": platform.processor(), "platform": platform.platform(),
                                   "cpu_count": __import__("os").cpu_count(),
@@ -138,7 +157,10 @@ if w.is_file():
     fig, ax1 = plt.subplots(figsize=(5, 3.2))
     ax1.plot(ss, [sizes[s]["latency"]["mean_ms"] for s in ss], "o-", color="#2a6fdb", label="latency (ms)")
     ax1.set_xlabel("inference resolution (px, long side)")
-    ax1.set_ylabel("latency per tray (ms, CPU)", color="#2a6fdb")
+    if "cpu_latency_by_imgsz" in out["detector"]:
+        ax1.plot(ss, [out["detector"]["cpu_latency_by_imgsz"][s]["mean_ms"] for s in ss], "o--", color="#7f8c8d",
+                 label="latency, CPU (ms)")
+    ax1.set_ylabel(f"latency per tray (ms, {'GPU' if a.device != 'cpu' else 'CPU'})", color="#2a6fdb")
     ax2 = ax1.twinx()
     ax2.plot(ss, [sizes[s]["map50"] for s in ss], "s--", color="#c0392b", label="mAP@0.5")
     ax2.plot(ss, [sizes[s]["fail_recall"] for s in ss], "^:", color="#27ae60", label="FAIL recall")
@@ -156,7 +178,8 @@ if w.is_file():
     lai = np.array([r["ai"] for r in layers])
     ax.loglog(lai, np.minimum(P, B * lai), "o", ms=3, alpha=0.5, color="#2a6fdb", label="conv layers (upper bound)")
     s0 = sizes.get(config.DEFAULT_IMGSZ, sizes[ss[-1]])
-    ax.loglog([out["detector"]["ai_total"]], [s0["attained_gflops"]], "r*", ms=12, label="whole network, attained")
+    ax.loglog([out["detector"]["ai_total"]], [out["detector"]["cpu_attained_gflops"]], "r*", ms=12,
+              label="whole network, attained (CPU)")
     ax.axvline(P / B, color="grey", ls=":", lw=1)
     ax.set_xlabel("arithmetic intensity (FLOP/byte)")
     ax.set_ylabel("GFLOP/s")
@@ -191,6 +214,9 @@ extract_batch(small, n_jobs=2)
 t2 = time.perf_counter()
 base["serial_ms_per_image"] = (t1 - t0) / len(small) * 1e3
 base["parallel2_ms_per_image"] = (t2 - t1) / len(small) * 1e3
+import multiprocessing  # noqa: E402
+
+base["parallel_actually_used"] = multiprocessing.get_start_method() == "fork"
 bl_path = model_dir / "rf_baseline.pkl"
 if bl_path.is_file():
     bl = pickle.loads(bl_path.read_bytes())

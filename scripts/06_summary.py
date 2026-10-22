@@ -131,6 +131,13 @@ if pf:
         L.append("Throughput vs batch (img/s): " + ", ".join(f"batch {k}: {v:.1f}" for k, v in d["throughput_img_per_s_by_batch"].items()))
         L.append("; inference ms vs threads: " + ", ".join(f"{k} thread(s): {v:.1f}" for k, v in d["inference_ms_by_threads"].items()) + "\n")
     b = pf["baseline"]
+    if "detector" in pf and "cpu_attained_gflops" in pf["detector"]:
+        L.append(f"CPU roofline position at {config.DEFAULT_IMGSZ}px: attained {pf['detector']['cpu_attained_gflops']:.1f} GFLOP/s "
+                 f"({pf['detector']['cpu_attained_gflops']/h['peak_gflops']*100:.0f} % of measured peak), inference {pf['detector']['cpu_inf_ms_default']:.1f} ms.\n")
+    if "bandwidth_numpy_1thread_gbs" in h:
+        L.append(f"Bandwidth: NumPy single-thread copy {h['bandwidth_numpy_1thread_gbs']:.1f} GB/s, PyTorch multi-thread copy {h['bandwidth_torch_multithread_gbs']:.1f} GB/s.\n")
+    if b.get("parallel_actually_used") is False:
+        L.append("Note: on this OS the 2-process feature extraction falls back to serial; the 'parallel' timing is a second serial run.\n")
     L.append(f"Baseline features: reference {b['reference']['ms_per_image']:.1f} ms/img -> optimised {b['fast']['ms_per_image']:.1f} ms/img "
              f"({b['reference']['ms_per_image']/b['fast']['ms_per_image']:.2f}x); 2 processes {b['parallel2_ms_per_image']:.1f} ms/img "
              f"vs serial {b['serial_ms_per_image']:.1f}; end-to-end {f(b.get('end_to_end_ms'), 1)} ms/tray; RF predict {f(b.get('rf_predict_ms'), 2)} ms.\n")
