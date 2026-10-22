@@ -48,6 +48,8 @@ def out_dirs(tag: str) -> tuple[Path, Path, Path]:
 def save_json(obj, path: Path) -> None:
     """Write JSON, converting NumPy types."""
     def conv(o):
+        if isinstance(o, float):
+            return None if np.isnan(o) else o
         if isinstance(o, (np.integer,)):
             return int(o)
         if isinstance(o, (np.floating,)):

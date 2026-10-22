@@ -28,16 +28,30 @@ if st:
         L.append(f"| {s} | {v['images']} | {v['fail_trays']} | " + " | ".join(str(n) for n in v["boxes"].values()) + " |")
     L.append("")
 
+dv = J("dataset_variants.json")
+if dv is None:  # variants are audited once, under the original dataset's tag
+    base = config.RESULTS_DIR / a.tag.removesuffix("-reduced").removesuffix("-block") / "tables" / "dataset_variants.json"
+    dv = load_json(base) if base.is_file() else None
+if dv:
+    g = dv["frame_gaps"]
+    L.append("## Leakage audit of the predefined split\n")
+    L.append("| split | median frames to nearest training frame | share <= 3 frames | share <= 30 frames | share same frame |\n|---|---|---|---|---|")
+    for s_, v in g.items():
+        L.append(f"| {s_} | {v['median']:.1f} | {v['frac_le_3']:.2f} | {v['frac_le_30']:.2f} | {v['frac_eq_0']:.2f} |")
+    L.append(f"\nBlock split (block {dv['block_split']['block']} frames, guard {dv['block_split']['gap']} frames): "
+             + ", ".join(f"{k} {v}" for k, v in dv["block_split"].items() if k in ("train", "valid", "test", "dropped_train_in_gap")) + "\n")
+
 if ev:
     L.append("## Method comparison (test split; thresholds chosen on validation)\n")
-    L.append("| method | mAP@0.5 | mAP@0.5:0.95 | tray AUC [95% CI] | fail_conf | FAIL recall [95% CI] | false-reject [95% CI] | review band: escape / review rate |")
-    L.append("|---|---|---|---|---|---|---|---|")
+    L.append("Tray = one image (frame). 'Evaluable' classes have >= 10 ground-truth boxes in the test split.\n")
+    L.append("| method | mAP@0.5 (evaluable classes) | mAP@0.5:0.95 (evaluable) | mAP@0.5 (all classes with GT) | tray AUC [95% CI] | fail_conf | FAIL recall [95% CI] | false-reject [95% CI] | review band: escape / review rate |")
+    L.append("|---|---|---|---|---|---|---|---|---|")
     for n, m in ev["methods"].items():
         t = m["tray"]
         c = t["test_at_fail_conf"]
         rbm = t["test_review_band"]
-        mp = (f(m["test"]["map50"]), f(m["test"]["map50_95"])) if "test" in m else ("n/a", "n/a")
-        L.append(f"| {METHOD_LABELS.get(n, n)} | {mp[0]} | {mp[1]} | {f(t['test_auc'])} {ci(t['test_ci95']['auc'])} | {f(t['fail_conf'], 4)} | "
+        mp = (f(m["test"].get("map50_evaluable")), f(m["test"].get("map50_95_evaluable")), f(m["test"]["map50"])) if "test" in m else ("n/a",) * 3
+        L.append(f"| {METHOD_LABELS.get(n, n)} | {mp[0]} | {mp[1]} | {mp[2]} | {f(t['test_auc'])} {ci(t['test_ci95']['auc'])} | {f(t['fail_conf'], 4)} | "
                  f"{f(c['fail_recall'])} {ci(t['test_ci95']['fail_recall'])} | {f(c['false_reject_rate'])} {ci(t['test_ci95']['false_reject_rate'])} | "
                  f"{f(rbm['escape_rate'])} / {f(rbm['review_rate'])} |")
     L.append("")

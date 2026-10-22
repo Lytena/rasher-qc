@@ -23,6 +23,7 @@ Annotation units: boxes are handled internally as ``(x1, y1, x2, y2)`` in
 from __future__ import annotations
 
 import json
+import re
 import shutil
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -243,6 +244,138 @@ def write_yolo_split(out_dir: Path, split: str, name: str, img: np.ndarray, boxe
         for (x1, y1, x2, y2), c in zip(boxes, classes)
     ]
     (out_dir / split / "labels" / f"{name}.txt").write_text("\n".join(lines))
+
+
+# ----------------------------------------------------------------------------
+# Video-frame structure of the provided dataset and leakage-aware splits
+# ----------------------------------------------------------------------------
+_FRAME_RE = re.compile(r"^(?P<prefix>.+?)_(?P<num>\d+)_(?:jpg|jpeg|png)\.rf\.[0-9a-f]+\.(?:jpg|jpeg|png)$", re.I)
+
+
+def frame_number(path: str | Path) -> int | None:
+    """Video frame number encoded in a Roboflow file name, else ``None``.
+
+    Roboflow renames ``frame_with_red_10049.jpg`` to
+    ``frame_with_red_10049_jpg.rf.<hash>.jpg``; augmented copies of the same
+    source frame share the number and differ in the hash.
+    """
+    m = _FRAME_RE.match(Path(path).name)
+    return int(m.group("num")) if m else None
+
+
+def frame_gap_to_train(ds: Dataset) -> dict[str, np.ndarray]:
+    """For each valid/test image, distance (in frames) to the nearest training frame.
+
+    In a video, a small gap means the same physical tray seen moments later,
+    i.e. the evaluation image is not independent of the training data.
+    """
+    tr = np.array(sorted({frame_number(r.path) for r in ds.split("train")} - {None}))
+    out = {}
+    for s in ("valid", "test"):
+        f = np.array([frame_number(r.path) for r in ds.split(s)], dtype=float)
+        out[s] = np.array([np.min(np.abs(tr - x)) if np.isfinite(x) and len(tr) else np.nan for x in f])
+    return out
+
+
+def _link(src: Path, dst: Path) -> None:
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    if dst.exists() or dst.is_symlink():
+        dst.unlink()
+    try:
+        dst.symlink_to(src.resolve())
+    except OSError:
+        shutil.copy(src, dst)
+
+
+def _write_subset(ds: Dataset, out: Path, assign: dict[str, list[Record]]) -> Path:
+    """Materialise a dataset variant as symlinks + YOLO label files."""
+    if out.exists():
+        shutil.rmtree(out)
+    for split, recs in assign.items():
+        for r in recs:
+            _link(r.path, out / split / "images" / r.path.name)
+            lab = r.path.parent.parent / "labels" / (r.path.stem + ".txt")
+            if lab.is_file():
+                _link(lab, out / split / "labels" / lab.name)
+            else:
+                (out / split / "labels").mkdir(parents=True, exist_ok=True)
+                (out / split / "labels" / (r.path.stem + ".txt")).write_text("")
+    (out / "data.yaml").write_text(yaml.safe_dump({"names": ds.names, "nc": len(ds.names), "train": "train/images",
+                                                   "val": "valid/images", "test": "test/images"}, sort_keys=False))
+    return out
+
+
+def one_copy_per_frame(records: list[Record]) -> list[Record]:
+    """Keep one (deterministically chosen) augmented copy of every source frame."""
+    seen: dict[int | str, Record] = {}
+    for r in sorted(records, key=lambda r: r.path.name):
+        key = frame_number(r.path)
+        seen.setdefault(key if key is not None else r.path.name, r)
+    return list(seen.values())
+
+
+def make_reduced_split(ds: Dataset, out: str | Path) -> Path:
+    """Predefined splits, but training reduced to one copy per source frame.
+
+    The Version 4 export holds three exposure-augmented copies (+/-10 %) of
+    every training frame. The detector applies its own, wider, on-the-fly
+    HSV augmentation, so the copies mainly triple the cost of an epoch.
+    """
+    return _write_subset(ds, Path(out), {"train": one_copy_per_frame(ds.split("train")),
+                                         "valid": ds.split("valid"), "test": ds.split("test")})
+
+
+def make_block_split(
+    ds: Dataset, out: str | Path, block: int = 300, gap: int = 60, frac: tuple[float, float] = (0.12, 0.12), seed: int = config.SEED
+) -> tuple[Path, dict]:
+    """Leakage-aware re-split: contiguous blocks of video frames per split.
+
+    All source frames (from every original split, one copy each) are cut into
+    blocks of ``block`` consecutive frame numbers. Whole blocks are assigned
+    at random to test/valid/train (target fractions ``frac`` for test and
+    valid). Training frames closer than ``gap`` frames to any test/valid frame
+    are discarded so that no tray appears on both sides of the split.
+
+    Args:
+        ds: Loaded original dataset (frame numbers must be parseable).
+        out: Output directory for the new variant.
+        block: Block length in frames.
+        gap: Guard band in frames.
+        frac: Target fractions of frames for (test, valid).
+        seed: Random seed for the block assignment.
+
+    Returns:
+        ``(path, info)`` where ``info`` reports frames per split and dropped frames.
+    """
+    recs = one_copy_per_frame(ds.records)
+    recs = [r for r in recs if frame_number(r.path) is not None]
+    fn = np.array([frame_number(r.path) for r in recs])
+    blocks = fn // block
+    ub = np.unique(blocks)
+    rng = np.random.default_rng(seed)
+    order = rng.permutation(ub)
+    n_tot = len(recs)
+    split_of_block: dict[int, str] = {}
+    counts = {"test": 0, "valid": 0}
+    for b in order:  # fill test, then valid, rest train
+        n_b = int(np.sum(blocks == b))
+        for s, f in (("test", frac[0]), ("valid", frac[1])):
+            if counts[s] + n_b <= f * n_tot * 1.15 and counts[s] < f * n_tot:
+                split_of_block[int(b)] = s
+                counts[s] += n_b
+                break
+        else:
+            split_of_block[int(b)] = "train"
+    sp = np.array([split_of_block[int(b)] for b in blocks])
+    held = fn[sp != "train"]
+    keep = np.ones(len(recs), bool)
+    for i in np.where(sp == "train")[0]:
+        if len(held) and np.min(np.abs(held - fn[i])) < gap:
+            keep[i] = False
+    assign = {s: [r for r, ss, k in zip(recs, sp, keep) if ss == s and k] for s in ("train", "valid", "test")}
+    info = {s: len(v) for s, v in assign.items()}
+    info.update({"dropped_train_in_gap": int((~keep).sum()), "block": block, "gap": gap, "seed": seed})
+    return _write_subset(ds, Path(out), assign), info
 
 
 # ----------------------------------------------------------------------------

@@ -45,6 +45,9 @@ from rasherqc.metrics import (
 )
 
 TARGET_RECALL, REVIEW_RECALL = 0.95, 0.99
+#: A class needs at least this many ground-truth boxes in a split for its AP
+#: to be reported as evidence (below it, one box changes AP by >= 10 points).
+MIN_GT = 10
 
 
 def extra(ap):
@@ -113,7 +116,11 @@ for name in ("yolo_pretrained", "yolo_scratch"):
         ev = evaluate_detections([r.boxes for r in recs], [r.classes for r in recs], preds_all[name][s], nc, method="coco101")
         ev_u = evaluate_detections([r.boxes for r in recs], [r.classes for r in recs], preds_all[name][s], nc,
                                    iou_thresholds=[0.5], method="trapz101")
+        ok = np.array(ev["n_gt"]) >= MIN_GT  # classes with enough boxes to estimate AP
         m[s] = {"map50": ev["map50"], "map50_95": ev["map50_95"], "ap50": ev["ap50"], "ap50_95": ev["ap50_95"],
+                "evaluable_classes": [ds.names[k] for k in np.where(ok)[0]],
+                "map50_evaluable": float(np.nanmean(ev["ap50"][ok])) if ok.any() else None,
+                "map50_95_evaluable": float(np.nanmean(ev["ap50_95"][ok])) if ok.any() else None,
                 "precision@0.25": ev["precision"], "recall@0.25": ev["recall"], "n_gt": ev["n_gt"],
                 "map50_trapz101": ev_u["map50"]}
     # cross-check with the Ultralytics validator on the test split
@@ -135,6 +142,7 @@ for name in ("yolo_pretrained", "yolo_scratch"):
     m["presence_auc_test"] = pres_auc
     m["_scores"] = {s: v.tolist() for s, v in scores.items()}
     out["methods"][name] = m
+    print(f"{name}: evaluable classes {m['test']['evaluable_classes']} mAP50={m['test']['map50_evaluable']}")
     print(f"{name}: test mAP50={m['test']['map50']:.3f} (ultralytics {m['ultralytics_test'].get('map50', float('nan')):.3f}) "
           f"mAP50-95={m['test']['map50_95']:.3f} tray AUC={m['tray']['test_auc']:.3f}")
 

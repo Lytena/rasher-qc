@@ -21,3 +21,8 @@ venv/
 .vscode/
 .idea/
 .DS_Store
+
+# Large intermediate artefacts
+models/*/rf_baseline.pkl
+results/*/cache/
+results/*/runs/*/weights/
