@@ -156,7 +156,9 @@ if ffile.is_file():
     feat_time = float(z["time"])
 else:
     t0 = time.perf_counter()
+    print("baseline: extracting hand-crafted features (CPU, a few minutes) ...", flush=True)
     F = {s: baseline.features_for(ds.split(s), n_jobs=2) for s in ("train", "valid", "test")}
+    print("baseline: fitting random forest with 5-fold cross-validation ...", flush=True)
     feat_time = time.perf_counter() - t0
     np.savez(ffile, time=feat_time, **F)
 yf_tr, yp_tr = baseline.labels(ds.split("train"), nc, D)

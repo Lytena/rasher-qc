@@ -109,4 +109,4 @@ def fit(F: np.ndarray, y_fail: np.ndarray, y_pres: np.ndarray, seed: int = confi
 
 def features_for(records: list[Record], mode: str = "fast", n_jobs: int = 2) -> np.ndarray:
     """Load images of ``records`` and extract baseline features."""
-    return extract_batch(load_feature_images(records), mode=mode, n_jobs=n_jobs)
+    return extract_batch(load_feature_images(records), mode=mode, n_jobs=n_jobs, progress=True)

@@ -225,7 +225,7 @@ def _extract_one(args):
     return extract_features(img, mode)
 
 
-def extract_batch(images: list[np.ndarray], mode: str = "fast", n_jobs: int = 1) -> np.ndarray:
+def extract_batch(images: list[np.ndarray], mode: str = "fast", n_jobs: int = 1, progress: bool = False) -> np.ndarray:
     """Extract features for many images, optionally in parallel processes.
 
     Args:
@@ -233,6 +233,7 @@ def extract_batch(images: list[np.ndarray], mode: str = "fast", n_jobs: int = 1)
         mode: Feature implementation, see :func:`extract_features`.
         n_jobs: Worker processes (1 = serial). Images are independent, so the
             work is embarrassingly parallel.
+        progress: Print a line every 200 images (serial mode only).
 
     Returns:
         (N, n_features) float64 array.
@@ -240,6 +241,11 @@ def extract_batch(images: list[np.ndarray], mode: str = "fast", n_jobs: int = 1)
     # Process pools need the "fork" start method when called from plain scripts;
     # on Windows/macOS ("spawn") the scripts would be re-imported, so run serially.
     if n_jobs <= 1 or multiprocessing.get_start_method(allow_none=False) != "fork":
-        return np.stack([extract_features(x, mode) for x in images])
+        out = []
+        for i, x in enumerate(images):
+            out.append(extract_features(x, mode))
+            if progress and (i + 1) % 200 == 0:
+                print(f"  features: {i + 1}/{len(images)} images", flush=True)
+        return np.stack(out)
     with ProcessPoolExecutor(n_jobs) as ex:
         return np.stack(list(ex.map(_extract_one, ((x, mode) for x in images), chunksize=8)))
