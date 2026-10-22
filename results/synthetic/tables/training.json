@@ -1,0 +1,11 @@
+{
+  "yolo_pretrained": {
+    "wall_time_s": 1511.67,
+    "epochs_run": 10,
+    "imgsz": 416,
+    "batch": 16,
+    "device": "cpu",
+    "epochs_max": 30,
+    "note": "stopped manually after this epoch to free the CPU for the real dataset; best.pt = best validation fitness so far"
+  }
+}

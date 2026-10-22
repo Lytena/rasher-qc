@@ -1,0 +1,717 @@
+[
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_1122_jpg.rf.76f6feb8875b8b3beaf60bd7ea5e31ec.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_631_jpg.rf.23d933cec93a6c4ed394f5f3ae4556af.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_1177_jpg.rf.fbd066a9a1201014b5637043831f95fe.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_4388_jpg.rf.438e67a2ef4eba21376a5b0954bc8875.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_1195_jpg.rf.5edff0d6dd0ba49c346fe42b4401617b.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_166_jpg.rf.1bd2cc4d4ac53752f6a555a17d738e29.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_1226_jpg.rf.02bacabc1b116d61d0ea2d69b74730ec.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_2309_jpg.rf.00e683b2544343d5bd05844c1a586067.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_1308_jpg.rf.4fe453ba69054077d74d6422a600509b.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_1083_jpg.rf.d031753901887fe5e858820813e625d3.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_1327_jpg.rf.65d2eaf3a3e42f71ff37d988fbf719f8.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_3398_jpg.rf.60f270d78ad4bfb48d98a9cdd2eb9673.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_137_jpg.rf.50d474f8f16d4b0b063a2d1a5706560c.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_1338_jpg.rf.31aae99593146befafb57050baf1fc7d.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_1393_jpg.rf.df87c31d694443cac64d952f27a96c17.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_5167_jpg.rf.11b37715a59bd716c01de294da21f897.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_1456_jpg.rf.2496f64ab3142e836ddcc9bfbddf24de.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_1254_jpg.rf.94a93dbb8bb3cb091d783e0e943de062.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_1571_jpg.rf.fd2e942185710087bcf922418c8bebf9.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_7395_jpg.rf.4ec02b7f753956fb3e5125facccdb14a.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_1572_jpg.rf.b3d4df3f1c03a90a6271936c2390adbd.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_7437_jpg.rf.f85dcd1b2243dac8eb7cff1f2ffd0f62.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_1688_jpg.rf.7a009dfca1f2ca00c871045163e8bd69.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_1772_jpg.rf.ca2aba2edb37fe47edfb6f0708f3fff2.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_1823_jpg.rf.9851108639c66de6836a3b41275fe202.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_1847_jpg.rf.f1fb35e40d5f04ad358e7a2b6387c847.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_1862_jpg.rf.9ec9be717f8a6602ebe5c6417bd22916.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_9161_jpg.rf.6530b0a3db47811b9bfe24089da5d0bc.jpg",
+    "hamming": 1
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_1903_jpg.rf.7d8d6d9f3df7dd6c3b314cb7ea7c7af5.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_2180_jpg.rf.15e3f3db0d87d11afaeb7905a6e52f2c.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_1946_jpg.rf.8bb719d736e607f79520160f4624223b.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_5319_jpg.rf.2616f628b5089e99bf62a52dcc87a4ee.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_2127_jpg.rf.67120a43090cb0c288263c51d4d2fb43.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_7986_jpg.rf.6876170bd0944e81619114b06c611f2c.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_215_jpg.rf.9c65a2aa269df55e39dd65e775217fda.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_3782_jpg.rf.bf4060e5a035ad8bd9797d656cc0898e.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_220_jpg.rf.74d5ab555aea0a22d94049dea4001c1b.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_368_jpg.rf.4059d7b723495e27f3eb007ea5c78601.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_2223_jpg.rf.7da69a499799d43cf6ab768af27acdba.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_10346_jpg.rf.64cabee998ef787d0835920f977bb849.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_2247_jpg.rf.0fd1b5ff33698ec25d593f790ae77c28.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_655_jpg.rf.c087f393196f00695da5475125999643.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_2259_jpg.rf.d1fcb42b8f7a89c1e34426fc9f0e2b9f.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_14_jpg.rf.85eb81c4e7d2d3f88f31d9c73ed4e54d.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_2289_jpg.rf.e4cabf0fac8d843cef9644727d7c0023.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_3826_jpg.rf.dea74f92d687b2684ffda41c87f9eb4c.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_2617_jpg.rf.a1009fb1133a89370a9eeba42ec2669e.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_3826_jpg.rf.dea74f92d687b2684ffda41c87f9eb4c.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_2659_jpg.rf.b675288930c3dac0e6559fdecfe99472.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_2089_jpg.rf.34aba2aaef1c5d0dc1c0041bc6325798.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_2743_jpg.rf.4f5e791fb83b6017f4a0c5b262d4ecfa.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_4907_jpg.rf.ea4c63e43965e18f4ccde9d608aeb475.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_2878_jpg.rf.7daabe73c01fd5914bb1af700fb3aac6.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_10396_jpg.rf.6a1bf18d022336df356189df084b35b4.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_2880_jpg.rf.1e489344a2ff27a11395233dd2bcce00.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_2089_jpg.rf.34aba2aaef1c5d0dc1c0041bc6325798.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_3482_jpg.rf.b747ed082728f9142d23a79d900f0dab.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_2439_jpg.rf.6373a6ee99c2d660e2d22f8c674ad965.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_4085_jpg.rf.45f80ef3e225f576e64bd3ec14ae3fec.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_7315_jpg.rf.375876d7401a739540eac398ea190fd5.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_4135_jpg.rf.1a89074e38ef3c0cbda3ff7e79680817.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_3076_jpg.rf.35dae80caa107a27d8d584a30d902a4e.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_415_jpg.rf.9de95db88b4b1524963fda1670a0785b.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_1342_jpg.rf.f31fd22c90172e2093b8843a61d112f3.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_4304_jpg.rf.feea1ecd0bcdf07514ac596a0efe8d1b.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_7466_jpg.rf.6417b56b5d86fca8baeaef56fea39453.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_4535_jpg.rf.a06cc66b68b93ee9644d5f3cdce0726a.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_1847_jpg.rf.1c460e8c4b0e86e4c28eec68ef0ddd75.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_4704_jpg.rf.80cecf14c626b6a221d917bfb6f405c2.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_1607_jpg.rf.36f414bda2d8b78037882473d8e1ca4b.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_4834_jpg.rf.19312c4984525349fc3a6802afa2f0e8.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_3076_jpg.rf.845e5c2671fb6a3f11d23e278197f815.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_4847_jpg.rf.aebaf96c10b3bb754a336d99dc735585.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_2754_jpg.rf.a1adc5a789a5111d336e694458767b36.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_4925_jpg.rf.2224f997f85781bb8b469b0b11d094cc.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_6825_jpg.rf.16ab96b122334c72f8cc48d465a455ff.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_5146_jpg.rf.d4168232d3518a790c5f3642113e2aca.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_561_jpg.rf.68f15d3e16160b93deb5a0f2650a7b64.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_5165_jpg.rf.61e5f0babd58eea0a436f49cef60d88b.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_1484_jpg.rf.aef1aaf7b9907abfee4b86671976f9e6.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_531_jpg.rf.d1bf4eab747883d5e9faf9e91a57c075.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_6920_jpg.rf.a5a722ce4336af8dfeb340ac3e09de67.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_5359_jpg.rf.1930ab9c2b6a9cb6105c69de0b80c76d.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_6013_jpg.rf.1f884bcff585c2fc049dd873244def5d.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_5667_jpg.rf.35c46cb81b879c2e6114b957b84cbf8f.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_1661_jpg.rf.e43d5df48442accea1aab1e7f7bebb5e.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_6043_jpg.rf.fffad9a57b8fb71df92350cc6e61f440.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_9537_jpg.rf.4187cca25ac418cb5e3345cf18c542b5.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_6071_jpg.rf.38d18a57aa7fbb647dbe1fff100f6c98.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_8113_jpg.rf.1ade00e9f00a0af5d0772e74618e7707.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_6144_jpg.rf.d19c906baee1a80d8118349e03d0c1c1.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_7334_jpg.rf.146480570833ed0338acf353b59beaf3.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_6159_jpg.rf.09f41ff983ed0710dd584f13627ba64b.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_7990_jpg.rf.11735e93891de234c6c4e1c9260dc4be.jpg",
+    "hamming": 1
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_6194_jpg.rf.6c5b8fe814fbf13689b9b8a32f16e516.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_7195_jpg.rf.2bae968267348700d4c983fc5addfbf0.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_6240_jpg.rf.c12f7a2de22d47faa4c4ff8214abb326.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_1799_jpg.rf.8cfb29e48d34a6e30f3b96c3c5c62ba3.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_6264_jpg.rf.1ce305a3d6cf08de1ab9d8edac603440.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_3639_jpg.rf.5867755edc520b22f5a5aa05ef0e309b.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_6290_jpg.rf.a0378651adfe9e67b153aaf45c533e01.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_3986_jpg.rf.b585127f363dc9acb610f629b4a1de1e.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_6313_jpg.rf.8512391be8fa8d6d8bf1b13c1312ce08.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_6016_jpg.rf.2c95e5562730503985edc784f284d516.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_644_jpg.rf.358a525ea18418a48033dfc4fb9745b9.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_368_jpg.rf.8da49edf3dcf477de2befae841a82943.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_6496_jpg.rf.87e72288446b3dd379425dfe570336d9.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_1889_jpg.rf.c726f64ad44a9087d6436c9d760fb8cc.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_6510_jpg.rf.9fbeec7c78f198fce748651195037051.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_1342_jpg.rf.71ed55953033b324aeb2703dc44d72c1.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_6680_jpg.rf.f9e69a0afc6bd6a1a096e937e61364b0.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_2053_jpg.rf.51f4e1e2b471fa2a211ddedca11c6461.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_6690_jpg.rf.c68f24776923469b0ff75dc9c66a2dc4.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_1719_jpg.rf.23887e45888be0619fd3207a23fa118e.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_6752_jpg.rf.9d8fbf34fcbba6241dae2c36b032ad59.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_191_jpg.rf.e8887404aed191ea26a6cd018622468d.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_6971_jpg.rf.ba48684eb7e7133a785ae8b6b4d000f1.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_2930_jpg.rf.e4a55559ce8785e03d0b3826ff55fba9.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_6983_jpg.rf.d8a722522f057db72ce7786ebb19cbc2.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_8724_jpg.rf.ad0143f1dcabb7b4efa759858f2db6fc.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_702_jpg.rf.3590a5ac9bf8a2598342211e6279a486.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_2754_jpg.rf.92e8dbed96b806cb90f34975976c3848.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_7030_jpg.rf.25ac5ef78763f4b7def3f56153e93434.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_534_jpg.rf.9317642a42506d5253cf7f37ce1ba2bd.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_7267_jpg.rf.1c3350f5e48c69a6295596bfa0d23050.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_6073_jpg.rf.6a20a9801e0bc22bbbd6af47bcd1174b.jpg",
+    "hamming": 1
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_7277_jpg.rf.cd59b940c2d82bdec9890e7882818390.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_7611_jpg.rf.44aea8870094d331c5c5cbf0cdb0fe7e.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_7302_jpg.rf.996199920caa60094d5a3cb04502e407.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_3138_jpg.rf.89b1276bc8b972a64e1ed362e4ba144c.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_7317_jpg.rf.5de2a806bd357e09123eb4be0781f3d2.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_8285_jpg.rf.236c7f68844c5772427f18886a1dcc9a.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_7340_jpg.rf.dbeeeb5443762f605c3384bcac3d7ba3.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_4485_jpg.rf.dcece874670d289bbf5f4e67c24bbee8.jpg",
+    "hamming": 1
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_7363_jpg.rf.d774b9fb1c7e6468a1741c470362dab3.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_7635_jpg.rf.26fac63251ed004e34b82083a7efe8fa.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_7508_jpg.rf.38e5d3b2ef3e41f34b9cc671f705d592.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_3986_jpg.rf.26f9cc7cbec67db9703811cfa869d7e5.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_7555_jpg.rf.bb6e12790123e5c87a84b216b92b3e98.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_4646_jpg.rf.7dfcee40dcecb7c08dd8d14234ab4de0.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_7653_jpg.rf.8023058b796ae28967fb93c79e646553.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_4388_jpg.rf.fc2ba9afbfedf36dc3147f3bee7d9ddb.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_7665_jpg.rf.685b7ff80000fe85c24254795710b204.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_3664_jpg.rf.65a6d39eff86d052ac5a13bec0b9069d.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_7687_jpg.rf.58ebe13530086e41c43e0a95ad8682e4.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_4518_jpg.rf.c479ec9eed3e3d9e85d310c3425fa6d6.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_7689_jpg.rf.b2a4f4b72bdfe02b74d4b6fb42bb3463.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_8385_jpg.rf.634e30aacb07efa73e1df96ed9ae7f61.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_7833_jpg.rf.6b42cdc9c42d9a8910516f2386828d07.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_3401_jpg.rf.06f0e4f129e65285de9bfba928abc532.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_7988_jpg.rf.a452c5b9b8fc1d36581f6c8f5be1d271.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_6426_jpg.rf.334242cf2e1a6d13c256e0364d51fc85.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_8049_jpg.rf.9c9541adc7706542de7c773c8917f7ac.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_1067_jpg.rf.203342bdf619c5700405d7dba870cd4b.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_8387_jpg.rf.21dca67439ee89edb913227acab68230.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_3725_jpg.rf.90685d6f4b541ce8c95d8fd01b77ecc3.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_8481_jpg.rf.6eb507951868edbc65351de21b5239c0.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_5263_jpg.rf.e1a90248b513493bc8434ebc63a096b8.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_8507_jpg.rf.05d14c170e1ed006a17214334be44a2f.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_3230_jpg.rf.9e5cad1fb564db2677872691489987ea.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_8627_jpg.rf.e0f16b203d1ac259b6c0a9172ae1652a.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_7823_jpg.rf.00833e7818fdec854335531ddd64f942.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_8649_jpg.rf.a4d923187143603a2804fb6968c677d8.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_7737_jpg.rf.c5cf3c76f9dfe8c0a29c008f9d3e7e8d.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_8745_jpg.rf.efbb2a263b14545070676f9175d81ded.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_1090_jpg.rf.0423eac4b3c1ccc45284161990bbe4b1.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_9082_jpg.rf.507dff66567628fee7aa1aa39fbd3fd7.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_7236_jpg.rf.399641a4b2fa55bfecd37efd19d004f9.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_9311_jpg.rf.42e8694a15dd5e3b34efec4e1e659be3.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_3725_jpg.rf.90685d6f4b541ce8c95d8fd01b77ecc3.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/valid/images/frame_with_red_967_jpg.rf.d2be7385111fdbba485f61d822616dce.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_2041_jpg.rf.dba178776918651b9eb0feda271cbd0d.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_121_jpg.rf.ad75eafa25397a05aab1e53d4ef575a4.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_4625_jpg.rf.ca55150d3ce285300b4a21dfe7c77781.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_1271_jpg.rf.fe7e60f579e43de1fb7bde872ffbaebd.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_7565_jpg.rf.b5f43929b7ee407d9665e71b9417264c.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_1298_jpg.rf.bbe700517e6a8b837196fec1a3c425c7.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_7447_jpg.rf.f236bdcbae75f2008092054e42490887.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_1405_jpg.rf.061b0a529d86947d72614947d16b3105.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_3040_jpg.rf.9b05d4bae02156f7448fb7e21846dcec.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_1521_jpg.rf.8c2f93027627984923b4cfbc699e59aa.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_7417_jpg.rf.c4bd1b950751d783e25e634f6fc83b0e.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_161_jpg.rf.f72001c0662bd4c495561eb27ae19c27.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_4222_jpg.rf.8d5ed6cd1559594bf32a85be6b8c28d0.jpg",
+    "hamming": 1
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_1787_jpg.rf.2ea27acbeb8b9e0111c2e985f7385aca.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_2403_jpg.rf.1876b01ca3042ccaf822d432f0862df8.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_199_jpg.rf.63479a7f3c3327f4defa236157780da0.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_3496_jpg.rf.9407bfa48c656e30a8177d907fd94e1f.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_21_jpg.rf.898d2cd3db0cf96ae2985d594121f268.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_3040_jpg.rf.9b05d4bae02156f7448fb7e21846dcec.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_2248_jpg.rf.7c29cf90087a6d4ca2ad1307d8f513f5.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_1115_jpg.rf.d04670c5e9fcacef7a10a7e8b6cf0b52.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_2317_jpg.rf.4abeaf71220b626a1722542689671962.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_191_jpg.rf.4d1b8ebefd3b89928134f0ae3b0972db.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_2942_jpg.rf.f88a77f5e5850991ececec7b5eeb48ab.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_3986_jpg.rf.26f9cc7cbec67db9703811cfa869d7e5.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_3117_jpg.rf.f7143bc7a934176ecafb9727e3c2642b.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_5547_jpg.rf.ce6653a40d16143e972130f5e5a14d6e.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_3303_jpg.rf.e910cc45370cc6f42f828d98731af54f.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_7507_jpg.rf.dbe7b302ba11dfad1b6c329def840bf0.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_3436_jpg.rf.e78209989a2d95373bfecbac626586e6.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_4547_jpg.rf.78ebb20bddfa7cecbcfe545bf15ff007.jpg",
+    "hamming": 1
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_3482_jpg.rf.ec3c9d1e545fdeaa05ff8aa1e74f20fc.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_8724_jpg.rf.cf423f8df0077ff0e8005153ad311aa8.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_3613_jpg.rf.1ed0f21e31122bbd73cb2fc03343c796.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_7926_jpg.rf.fcfb6632017b26239fa71f66983fbe05.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_378_jpg.rf.2dd94f946948c9b3fd658453b1f66659.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_8230_jpg.rf.68b0dd16db69a5eae5d4a4893bc2fb48.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_3798_jpg.rf.9f1624d9a1e503f4e4431fe4da78a2bc.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_9204_jpg.rf.8c791ed54d68baab4d1aae58b12c7c2f.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_3989_jpg.rf.ab2fcb5504c7b4e0406b08f046079d7e.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_631_jpg.rf.23d933cec93a6c4ed394f5f3ae4556af.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_4145_jpg.rf.26217bb5cebff04bbf9e18485dad08a8.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_4557_jpg.rf.97061bac9d6bb4225290c135b7ed3907.jpg",
+    "hamming": 0
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_4170_jpg.rf.d8c8752306e12c3db16b1e549e58179b.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_5033_jpg.rf.eef7266276c8cc0aa783f2783236023a.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_4426_jpg.rf.7ec891625c20dc5a99fc57817a7b7f43.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_7509_jpg.rf.4787740a90ab5c3a4ba50da1269bda5c.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_5732_jpg.rf.fffdcea3178955c65f10574477e5ab0e.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_8603_jpg.rf.18cedd2647a99bb00441ddc703d02291.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_6121_jpg.rf.f2258ac89262687db40a856df49c5899.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_1338_jpg.rf.b589b560a666864c2d7694f5e81b9bba.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_6170_jpg.rf.60e13e7d6f7453a270bc117d6df14401.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_7494_jpg.rf.eeb28b4d624ed7cfbf3923f1040aa61b.jpg",
+    "hamming": 1
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_6253_jpg.rf.97b0c50d4f0b4fec5ca62db6445421bc.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_10263_jpg.rf.df4c100f7fe0814550c3fa6f606431e8.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_62_jpg.rf.235c461fc3473a015573bc95703559c9.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_94_jpg.rf.bcd2e59e06018f4306d85014b74bd230.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_6338_jpg.rf.c5a0b580e8afd15a2bdbaf89c12f9275.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_4217_jpg.rf.8a226f116b17e7d0cfef9bd550f38918.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_6397_jpg.rf.9f801c0762592a6cd25240028bc551de.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_2104_jpg.rf.56be271ab4ad8847916f13de8b5538a7.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_6433_jpg.rf.f07e91c50eeb1b20ade7b84892a06103.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_546_jpg.rf.febec3430cbbe2cf08ba6ff087fe64eb.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_6456_jpg.rf.226f9ab4ac529c02377d9585a05760f9.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_6406_jpg.rf.b349678d92f0f6fc7902a4f5ca1a023e.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_692_jpg.rf.828d9bbaf673731730594982cec5fd0e.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_480_jpg.rf.1da3dd745a8fac9b72c9f60aab39c873.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_6945_jpg.rf.8c79f189a3a59182373e044a6d39a406.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_7145_jpg.rf.d6841956dd82124c2cb9d18c9ccbb144.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_6959_jpg.rf.39ba7ab31540816c3dfa68bd65c3a08d.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_6484_jpg.rf.4d98aa4378c6308d46b54fa26ce01bfe.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_7073_jpg.rf.6b327fb33d4f97d2ecc85a8e38d3ba0c.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_3974_jpg.rf.1ceca598f13bbdc64d350ed86b48a6bd.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_72_jpg.rf.8d5d4b6332707b85eb5b278d5c584b2a.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_2246_jpg.rf.49d7e6d4558780fc0df5243d27c7d618.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_7325_jpg.rf.c5be3d172377edf96f4a7c7c2eaab561.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_6505_jpg.rf.cd6a36acac2d6ef1f89ab6a6376ed7ae.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_7399_jpg.rf.c12f458c6ae9a53b4ab6f25b8a60fc2d.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_1570_jpg.rf.8ab0c3f01e1d812d9fec4bbd3b689cbd.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_7471_jpg.rf.d9733c9a3c8e75ec75d4c6c9f744a199.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_3782_jpg.rf.bf4060e5a035ad8bd9797d656cc0898e.jpg",
+    "hamming": 1
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_7506_jpg.rf.c7c42fbdaa7e02d1a127e7257a932047.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_9239_jpg.rf.5397121038fcbc0969758c659e2b9df0.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_7510_jpg.rf.ab32fc359f85d0aa457f0c8cf746ac00.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_3520_jpg.rf.f7e49f92124268d752c2a2a39a8888fc.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_7531_jpg.rf.c468cc456d436b955f3d23777bb9d7f8.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_9148_jpg.rf.8bf97f0b381461dc55690da79543d18d.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_7617_jpg.rf.9c6fe7f0294ef5016d532ac1ac8c668f.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_7293_jpg.rf.0e8463e40a5dd8b5e6caa3efe9d550b8.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_7744_jpg.rf.04e89867c456a8d73e4872337c46deb1.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_2147_jpg.rf.279d4dc281951b06e60ee2e80c98b945.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_7893_jpg.rf.53c7f2fe486e519510e24c1969f28004.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_4222_jpg.rf.8d5ed6cd1559594bf32a85be6b8c28d0.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_8146_jpg.rf.a450e9c7be73cccfebf9a7ae85eeb715.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_1847_jpg.rf.84a5f7b3501570748c0452567635dca2.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_8182_jpg.rf.45c8c258b30a36db457e27e6957c7c88.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_7459_jpg.rf.de61163b326610af0e491d6dba1a8700.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_8208_jpg.rf.4656d0a5bebf6c4c06953f58cdf9f518.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_3592_jpg.rf.acd7b1d397bb1e6f900b8b5e5da51064.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_8337_jpg.rf.62df5e8671f3272c3a81cd68051bed85.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_6938_jpg.rf.01b4f4310c6f9783df17fb6fc6a49d5e.jpg",
+    "hamming": 1
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_8565_jpg.rf.2f2a654db05f7e86fe194c43acd84be2.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_6146_jpg.rf.8e1857e0dcc2d82512516ea0ec2d60ab.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_889_jpg.rf.20efea8fc63b20aac8f23efa64587dfc.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_6789_jpg.rf.b24fce7c74620942ac50544921180c84.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_9017_jpg.rf.230edf95839a83874962766972f6d5c9.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_1578_jpg.rf.78c1bb231fa72f023573b6de363c29c4.jpg",
+    "hamming": 4
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_908_jpg.rf.049ec4bdc03dbb17fb37a5b08cb582fd.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_3040_jpg.rf.9b05d4bae02156f7448fb7e21846dcec.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_9202_jpg.rf.71f21b567f76b4b718313b50ab15ba26.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_7797_jpg.rf.e4bb617c092a875a5ec4962bb6cdd01a.jpg",
+    "hamming": 2
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_9300_jpg.rf.b85ccc6ecd8ac14c935463fcc1000580.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_583_jpg.rf.73975d62adc089e1c7b7bc3048b1f9e1.jpg",
+    "hamming": 3
+  },
+  {
+    "eval_image": "/home/claude/rasher-qc/data/pork-rasher/test/images/frame_with_red_963_jpg.rf.dede332c5fe70a1727466ca431dc897e.jpg",
+    "train_image": "/home/claude/rasher-qc/data/pork-rasher/train/images/frame_with_red_2147_jpg.rf.e3186228fb707298056b80587d852bdf.jpg",
+    "hamming": 1
+  }
+]

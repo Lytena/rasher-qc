@@ -1,0 +1,56 @@
+{
+  "train": {
+    "images": 600,
+    "fail_trays": 386,
+    "boxes": {
+      "loose-meat": 110,
+      "packaging-error": 130,
+      "twisted-meat": 140,
+      "unsealed": 111,
+      "wrinkle": 93
+    },
+    "box_area_frac_median": {
+      "loose-meat": 0.10638113271600003,
+      "packaging-error": 0.00919492564300001,
+      "twisted-meat": 0.016358065123499993,
+      "unsealed": 0.014691260031000002,
+      "wrinkle": 0.011319450000000026
+    }
+  },
+  "valid": {
+    "images": 150,
+    "fail_trays": 110,
+    "boxes": {
+      "loose-meat": 41,
+      "packaging-error": 45,
+      "twisted-meat": 27,
+      "unsealed": 27,
+      "wrinkle": 30
+    },
+    "box_area_frac_median": {
+      "loose-meat": 0.09299891121399999,
+      "packaging-error": 0.008307577572000005,
+      "twisted-meat": 0.016010846142,
+      "unsealed": 0.01472220000000001,
+      "wrinkle": 0.009359566820999997
+    }
+  },
+  "test": {
+    "images": 150,
+    "fail_trays": 106,
+    "boxes": {
+      "loose-meat": 22,
+      "packaging-error": 26,
+      "twisted-meat": 35,
+      "unsealed": 42,
+      "wrinkle": 28
+    },
+    "box_area_frac_median": {
+      "loose-meat": 0.10182492908949997,
+      "packaging-error": 0.007471692180999999,
+      "twisted-meat": 0.016051889712000014,
+      "unsealed": 0.015127324074000012,
+      "wrinkle": 0.011855722067999997
+    }
+  }
+}
