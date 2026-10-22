@@ -77,10 +77,18 @@ def main() -> None:
             if a.force or not (mdir / f"yolo_{which}.pt").is_file():
                 run("scripts/02_train_detectors.py", "--data", str(d), "--which", which, "--epochs", str(a.epochs),
                     "--batch", str(a.batch), "--device", a.device)
-        run("scripts/03_evaluate.py", "--data", str(d), "--device", a.device)
-        run("scripts/04_robustness.py", "--data", str(d), "--device", a.device,
-            "--methods", "yolo_pretrained", "yolo_scratch", "rf_baseline")
-        run("scripts/05_performance.py", "--data", str(d), "--device", a.device)
+        tables = ROOT / "results" / tag / "tables"
+
+        def done(name: str) -> bool:
+            return not a.force and (tables / name).is_file()
+
+        if not done("evaluation.json"):
+            run("scripts/03_evaluate.py", "--data", str(d), "--device", a.device)
+        if not done("robustness.json") or "rf_baseline" not in (tables / "robustness.json").read_text():
+            run("scripts/04_robustness.py", "--data", str(d), "--device", a.device,
+                "--methods", "yolo_pretrained", "yolo_scratch", "rf_baseline")
+        if not done("performance.json"):
+            run("scripts/05_performance.py", "--data", str(d), "--device", a.device)
         run("scripts/06_summary.py", "--data", str(d))
 
     run("-m", "pytest", "--html=results/test_report.html", "--self-contained-html", "-q")

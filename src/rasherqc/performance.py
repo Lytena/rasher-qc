@@ -16,7 +16,6 @@ are measured here with micro-benchmarks rather than taken from data sheets.
 
 from __future__ import annotations
 
-import resource
 import time
 
 import numpy as np
@@ -94,8 +93,28 @@ def memory_bandwidth_gbs(n_mb: int = 256, repeats: int = 5) -> float:
 
 
 def peak_rss_mb() -> float:
-    """Peak resident memory of this process so far (MB, Linux semantics)."""
-    return resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024
+    """Peak resident memory (working set) of this process so far, in MB.
+
+    Uses ``psutil`` (installed with Ultralytics) on every OS; falls back to the
+    Unix-only ``resource`` module, and returns NaN if neither is available.
+    """
+    try:
+        import psutil
+
+        mi = psutil.Process().memory_info()
+        peak = getattr(mi, "peak_wset", None)  # Windows: true peak working set
+        if peak is None:
+            import resource  # Linux/macOS: peak RSS (kB on Linux)
+
+            return resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024
+        return peak / 1e6
+    except ImportError:
+        try:
+            import resource
+
+            return resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024
+        except ImportError:
+            return float("nan")
 
 
 def time_function(fn, *args, n: int = 20, warmup: int = 3, **kwargs) -> dict:
