@@ -26,3 +26,9 @@ venv/
 models/*/rf_baseline.pkl
 results/*/cache/
 results/*/runs/*/weights/
+results/*/runs/*/*.jpg
+results/*/runs/*/Box*_curve.png
+results/*/runs/*/confusion_matrix.png
+# Scratch-initialised models are reproducible with scripts/02 and not needed for inspection
+models/*/yolo_scratch.pt
+models/yolov8n_coco_pretrained.pt

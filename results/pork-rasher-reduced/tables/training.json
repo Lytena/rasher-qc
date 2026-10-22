@@ -1,0 +1,18 @@
+{
+  "yolo_pretrained": {
+    "wall_time_s": 1599.5402298000408,
+    "epochs_run": 57,
+    "imgsz": 416,
+    "batch": 16,
+    "device": "0",
+    "epochs_max": 60
+  },
+  "yolo_scratch": {
+    "wall_time_s": 2100.8734782999963,
+    "epochs_run": 60,
+    "imgsz": 416,
+    "batch": 16,
+    "device": "0",
+    "epochs_max": 60
+  }
+}

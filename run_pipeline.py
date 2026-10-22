@@ -89,6 +89,8 @@ def main() -> None:
                 "--methods", "yolo_pretrained", "yolo_scratch", "rf_baseline")
         if not done("performance.json"):
             run("scripts/05_performance.py", "--data", str(d), "--device", a.device)
+        if not done("operating_points.json"):
+            run("scripts/07_operating_points.py", "--data", str(d), "--device", a.device)
         run("scripts/06_summary.py", "--data", str(d))
 
     run("-m", "pytest", "--html=results/test_report.html", "--self-contained-html", "-q")
