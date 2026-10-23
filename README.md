@@ -19,7 +19,7 @@ Detects and localises **placement and packaging defects** in top-view images of 
 ## 1. Quick start
 
 ```bash
-git clone https://github.com/<your-username>/rasher-qc.git
+git clone https://github.com/Lytena/rasher-qc.git
 cd rasher-qc
 python -m venv .venv && source .venv/bin/activate        # Windows: .venv\Scripts\activate
 pip install -e ".[dev]"                                   # installs the package + test/doc tools
