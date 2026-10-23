@@ -1,7 +1,7 @@
 # Automated Detection of Pork-Rasher Packaging and Placement Defects
 
 **MMA3001 Numerical Methods and Machine Learning — Individual Project Report**
-Author: Yijing · Repository: `rasher-qc` · October 2026
+Author: Haruku Nishikawa · Co-author: Claude (Anthropic) · Repository: `rasher-qc` · October 2026
 
 > Every number below comes from `results/<dataset>/SUMMARY.md` (written by `scripts/06_summary.py`) or `results/<dataset>/tables/operating_points.json` (`scripts/07_operating_points.py`); nothing was typed in by hand. The real-data models were trained on my laptop (RTX 4070 laptop GPU, Intel Core with 20 logical CPUs, Windows 11); the synthetic run used a 2-core cloud Xeon. `-block` is the leakage-aware split and `-reduced` the predefined one (Section 2.2).
 
