@@ -211,6 +211,9 @@ def render(rng: np.random.Generator, defects: list[int] | None = None) -> Scene:
 
     Returns:
         A :class:`Scene`.
+
+    Raises:
+        ValueError: If a defect id is not a valid class index.
     """
     if defects is None:
         defects = [] if rng.random() < 0.35 else list(rng.integers(0, 5, rng.integers(1, 3)))

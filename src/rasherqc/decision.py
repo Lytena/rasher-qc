@@ -14,7 +14,7 @@ An image outside the supported input domain (see :mod:`rasherqc.io`) is
 Asymmetric costs justify the review band: passing a defective tray (an
 *escape*) can mean a leaking pack reaching a customer; failing a good tray
 only costs a re-check. Thresholds are selected on the validation split
-(``scripts/04_tray_decision.py``), never on the test split.
+(``scripts/03_evaluate.py``), never on the test split.
 
 Defect extent
 -------------
@@ -82,6 +82,8 @@ def decide(
     if review_low > fail_conf:
         raise ValueError("review_low must not exceed fail_conf")
     w, h = image_wh
+    # Report every defect an operator might want to look at (REVIEW band and up),
+    # most confident first; weaker detections are noise for the operator.
     keep = np.isin(det.classes, defect_ids) & (det.scores >= review_low)
     defects = []
     for b, s, c in sorted(zip(det.boxes[keep], det.scores[keep], det.classes[keep]), key=lambda t: -t[1]):
@@ -91,6 +93,8 @@ def decide(
             "box_xyxy": [round(float(v), 1) for v in b],
             "area_frac": round(float((b[2] - b[0]) * (b[3] - b[1]) / (w * h)), 5),
         })
+    # The tray is judged by its single most confident defect: one real defect
+    # is enough to reject a pack, however many clean regions it has.
     sel = np.isin(det.classes, defect_ids)
     score = float(det.scores[sel].max()) if sel.any() else 0.0
     status = "FAIL" if score >= fail_conf else "REVIEW" if score >= review_low else "PASS"

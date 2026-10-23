@@ -35,6 +35,7 @@ from rasherqc.metrics import binary_confusion, evaluate_detections, tray_scores
 
 
 def extra(ap):
+    """Add this script's timing options (device, repetitions, ...)."""
     ap.add_argument("--device", default="cpu")
     ap.add_argument("--sizes", nargs="+", type=int, default=[256, 320, 416, 512, 640])
 

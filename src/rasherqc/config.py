@@ -43,7 +43,7 @@ NATIVE_WH: tuple[int, int] = (720, 540)
 #: Training/inference resolution (longest side, px) used for the CPU runs.
 DEFAULT_IMGSZ: int = 416
 #: A tray FAILS when any defect is detected with confidence >= this value.
-#: Chosen on the validation set (see ``scripts/04_tray_decision.py``).
+#: Chosen on the validation set (see ``scripts/03_evaluate.py``).
 DEFAULT_FAIL_CONF: float = 0.25
 #: Trays whose highest defect confidence lies in [REVIEW_LOW, FAIL_CONF)
 #: are routed to a human ("REVIEW") instead of passing automatically.

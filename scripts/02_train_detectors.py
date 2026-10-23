@@ -26,6 +26,7 @@ from rasherqc.detector import train
 
 
 def extra(ap):
+    """Add this script's training options (epochs, batch size, device, ...)."""
     ap.add_argument("--epochs", type=int, default=40)
     ap.add_argument("--imgsz", type=int, default=config.DEFAULT_IMGSZ)
     ap.add_argument("--batch", type=int, default=16)

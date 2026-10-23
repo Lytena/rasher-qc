@@ -52,6 +52,7 @@ MIN_GT = 10
 
 
 def extra(ap):
+    """Add this script's evaluation options (image size, device, bootstrap size, ...)."""
     ap.add_argument("--imgsz", type=int, default=config.DEFAULT_IMGSZ)
     ap.add_argument("--device", default="cpu")
 
@@ -69,6 +70,16 @@ out: dict = {"classes": ds.names, "n_images": {s: len(r) for s, r in splits.item
 
 
 def choose_thresholds(yv, sv):
+    """Pick the tray thresholds on the *validation* split.
+
+    Args:
+        yv: Validation tray labels (1 = defective).
+        sv: Validation tray scores (highest defect confidence).
+
+    Returns:
+        ``(t_fail, t_low)``: the highest thresholds that still reach the target
+        FAIL recall (95 %) and review recall (99 %) respectively.
+    """
     grid = np.unique(np.concatenate([[0.0], np.round(sv, 4)]))
     rec = np.array([binary_confusion(yv, sv >= t)["fail_recall"] for t in grid])
     fail = float(grid[rec >= TARGET_RECALL].max())

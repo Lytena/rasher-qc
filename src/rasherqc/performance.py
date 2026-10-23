@@ -71,7 +71,7 @@ def peak_compute_gflops(n: int = 1024, repeats: int = 10, threads: int | None = 
     if threads:
         torch.set_num_threads(threads)
     a, b = torch.randn(n, n), torch.randn(n, n)
-    for _ in range(2):
+    for _ in range(2):  # warm-up: thread pool start-up and BLAS kernel selection
         a @ b
     t0 = time.perf_counter()
     for _ in range(repeats):
@@ -84,12 +84,12 @@ def memory_bandwidth_gbs(n_mb: int = 256, repeats: int = 5) -> float:
     """Sustained memory bandwidth (GB/s) from a large array copy (read + write)."""
     a = np.ones(n_mb * 1024 * 1024 // 8)
     b = np.empty_like(a)
-    np.copyto(b, a)
+    np.copyto(b, a)  # touch both arrays once so page faults are not timed
     t0 = time.perf_counter()
     for _ in range(repeats):
         np.copyto(b, a)
     dt = (time.perf_counter() - t0) / repeats
-    return 2 * a.nbytes / dt / 1e9
+    return 2 * a.nbytes / dt / 1e9  # each element is read once and written once
 
 
 def peak_rss_mb() -> float:

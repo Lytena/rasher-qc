@@ -27,11 +27,13 @@ PY = sys.executable
 
 
 def run(*args: str) -> None:
+    """Run one pipeline script with the current Python; stop on failure."""
     print("\n>>>", " ".join(args), flush=True)
     subprocess.run([PY, *args], cwd=ROOT, check=True)
 
 
 def main() -> None:
+    """Parse arguments and run every pipeline step that is not yet done."""
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--zip", help="Roboflow YOLOv8 export zip (unzipped to data/pork-rasher)")
     ap.add_argument("--data", default="data/pork-rasher")
@@ -80,6 +82,7 @@ def main() -> None:
         tables = ROOT / "results" / tag / "tables"
 
         def done(name: str) -> bool:
+            """True if this step's output table exists (and --force is off)."""
             return not a.force and (tables / name).is_file()
 
         if not done("evaluation.json"):

@@ -136,6 +136,9 @@ def average_precision(recall: np.ndarray, precision: np.ndarray, method: str = "
 
     Returns:
         AP in [0, 1].
+
+    Raises:
+        ValueError: If ``method`` is not one of the three names above.
     """
     mrec = np.concatenate([[0.0], recall, [1.0]])
     mpre = np.concatenate([[1.0], precision, [0.0]])
@@ -185,6 +188,9 @@ def evaluate_detections(
         Dict with ``ap50`` and ``ap50_95`` (per-class arrays, NaN for classes
         without GT), ``map50``, ``map50_95``, ``precision``, ``recall``,
         ``f1`` (per class at ``conf``) and ``n_gt`` per class.
+
+    Raises:
+        ValueError: If the three per-image lists differ in length.
     """
     if not len(gt_boxes) == len(gt_classes) == len(preds):
         raise ValueError("gt_boxes, gt_classes and preds must have the same length")

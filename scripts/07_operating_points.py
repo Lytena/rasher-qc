@@ -26,6 +26,7 @@ MIN_GT = 10
 
 
 def extra(ap):
+    """Add this script's options (device, ...)."""
     ap.add_argument("--device", default="cpu")
     ap.add_argument("--sizes", nargs="+", type=int, default=[256, 320, 416, 512, 640])
 

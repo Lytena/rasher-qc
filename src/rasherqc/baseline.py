@@ -85,6 +85,8 @@ def fit(F: np.ndarray, y_fail: np.ndarray, y_pres: np.ndarray, seed: int = confi
     Returns:
         A fitted :class:`Baseline`.
     """
+    # Small grid: the baseline only needs to be a fair, tuned reference, and
+    # AUC is used because the tray threshold is chosen later, on validation.
     grid = {"n_estimators": [200, 500], "max_depth": [None, 12], "min_samples_leaf": [1, 3],
             "max_features": ["sqrt", 0.3]}
     cv = StratifiedKFold(5, shuffle=True, random_state=seed)
@@ -95,9 +97,11 @@ def fit(F: np.ndarray, y_fail: np.ndarray, y_pres: np.ndarray, seed: int = confi
     pres = []
     for c in range(y_pres.shape[1]):
         yc = y_pres[:, c]
-        if yc.min() == yc.max():
+        if yc.min() == yc.max():  # class never (or always) present: nothing to learn
             pres.append(None)
             continue
+        # Reuse the PASS/FAIL hyper-parameters: rare classes have too few
+        # positives for their own cross-validated search.
         m = RandomForestClassifier(class_weight="balanced", random_state=seed, n_jobs=n_jobs, **best)
         pres.append(m.fit(F, yc))
     cvr = {k: list(map(lambda v: v if isinstance(v, (int, float, str)) or v is None else str(v), vals))

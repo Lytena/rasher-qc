@@ -25,6 +25,7 @@ from rasherqc.dataset import class_statistics, frame_gap_to_train, load_dataset,
 
 
 def extra(ap):
+    """Add this script's options (block size and guard band of the block split)."""
     ap.add_argument("--block", type=int, default=300)
     ap.add_argument("--gap", type=int, default=60)
 

@@ -13,7 +13,7 @@ cells to GT boxes. Non-maximum suppression (NMS) removes duplicate boxes.
 Why it was chosen (alternatives in the report): single-pass inference fits a
 real-time line; the nano variant (3.0 M parameters, ~8 GFLOPs at 640 px)
 runs on a CPU; pretrained COCO weights give transfer learning, important with
-~1.4 k training images; the library is widely used and reproducible.
+only 1,085 distinct training frames; the library is widely used and reproducible.
 
 The ``ultralytics`` import is deferred so the rest of the package (metrics,
 baseline, tests) works without it.
@@ -143,7 +143,7 @@ class Detector:
             per-stage split (``pre_ms``, ``inf_ms``, ``post_ms``).
         """
         bgr = image[..., ::-1].copy()
-        for _ in range(warmup):
+        for _ in range(warmup):  # first calls include model fusing and memory allocation
             self.model.predict(bgr, imgsz=self.imgsz, conf=0.25, device=self.device, verbose=False)
         t, stages = [], []
         for _ in range(n):

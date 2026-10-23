@@ -48,6 +48,7 @@ def out_dirs(tag: str) -> tuple[Path, Path, Path]:
 def save_json(obj, path: Path) -> None:
     """Write JSON, converting NumPy types."""
     def conv(o):
+        """Convert NumPy scalars/arrays and NaN to plain JSON values."""
         if isinstance(o, float):
             return None if np.isnan(o) else o
         if isinstance(o, (np.integer,)):
@@ -63,4 +64,5 @@ def save_json(obj, path: Path) -> None:
 
 
 def load_json(path: Path):
+    """Read a JSON file written by :func:`save_json`."""
     return json.loads(Path(path).read_text())

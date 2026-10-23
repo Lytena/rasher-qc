@@ -29,6 +29,7 @@ from rasherqc.metrics import binary_confusion, evaluate_detections, tray_scores
 
 
 def extra(ap):
+    """Add this script's robustness options (image size, device, ...)."""
     ap.add_argument("--imgsz", type=int, default=config.DEFAULT_IMGSZ)
     ap.add_argument("--device", default="cpu")
     ap.add_argument("--methods", nargs="+", default=["yolo_pretrained", "rf_baseline"])

@@ -110,7 +110,21 @@ def _images_in(d: Path) -> list[Path]:
 
 
 def _read_yolo_labels(txt: Path, w: int, h: int, nc: int) -> tuple[np.ndarray, np.ndarray]:
-    """Parse a YOLO label file into pixel ``xyxy`` boxes and class ids."""
+    """Parse a YOLO label file into pixel ``xyxy`` boxes and class ids.
+
+    Args:
+        txt: Label file (one ``class cx cy w h`` row per object, normalised 0-1).
+        w: Image width in pixels.
+        h: Image height in pixels.
+        nc: Number of classes in the dataset.
+
+    Returns:
+        ``(boxes, classes)``: (N, 4) pixel ``xyxy`` boxes and (N,) class ids.
+        A missing file means an image with no objects.
+
+    Raises:
+        InvalidInputError: If a class id is outside ``0 .. nc-1``.
+    """
     if not txt.is_file():
         return np.zeros((0, 4)), np.zeros(0, int)  # no file = no objects
     rows = [ln.split() for ln in txt.read_text().splitlines() if ln.strip()]
@@ -153,6 +167,17 @@ def _load_yolo(root: Path) -> tuple[list[str], list[Record], dict[str, Path]]:
 
 
 def _load_coco(root: Path) -> tuple[list[str], list[Record], dict[str, Path]]:
+    """Load a Roboflow COCO export (one ``_annotations.coco.json`` per split).
+
+    Args:
+        root: Dataset folder containing ``train/``, ``valid/`` and ``test/``.
+
+    Returns:
+        ``(names, records, split_dirs)`` in the same form as the YOLO loader.
+
+    Raises:
+        InvalidInputError: If no split contains an annotation file.
+    """
     per_split = {}
     for split in SPLITS:
         d = _split_dir(root, split)

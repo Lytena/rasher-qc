@@ -47,9 +47,12 @@ def glare(img: np.ndarray, strength: float, seed: int = 0, n_bars: int = 2) -> n
     for _ in range(n_bars):
         a = rng.uniform(0, np.pi)
         px, py = rng.uniform(0.25, 0.75) * w, rng.uniform(0.25, 0.75) * h
+        # Rotated anisotropic Gaussian: long along the bar, thin across it,
+        # like a reflection of a strip light on the lidding film.
         along = (xx - px) * np.cos(a) + (yy - py) * np.sin(a)
         across = -(xx - px) * np.sin(a) + (yy - py) * np.cos(a)
         bar = np.exp(-(across**2) / (2 * (0.02 * w) ** 2) - along**2 / (2 * (0.15 * w) ** 2))
+        # Screen-style blend: brightens towards white without overshooting.
         f = f + (1 - f) * (strength * bar)[..., None]
     return (np.clip(f, 0, 1) * 255).astype(np.uint8)
 
@@ -75,7 +78,7 @@ def jpeg(img: np.ndarray, quality: int) -> np.ndarray:
     return np.asarray(Image.open(buf).convert("RGB"))
 
 
-#: Perturbation sweeps used by ``scripts/05_robustness.py``: name -> (function, levels).
+#: Perturbation sweeps used by ``scripts/04_robustness.py``: name -> (function, levels).
 SWEEPS: dict[str, tuple] = {
     "exposure": (exposure, [0.5, 0.65, 0.8, 1.0, 1.2, 1.4, 1.6]),
     "saturation": (saturation, [0.0, 0.4, 0.7, 1.0, 1.3, 1.6]),
