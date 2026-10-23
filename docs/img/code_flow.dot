@@ -1,0 +1,46 @@
+digraph G {
+  graph [rankdir=TB, fontname="Helvetica", fontsize=13, nodesep=0.35, ranksep=0.42, pad=0.3, bgcolor="white", labeljust=l];
+  node  [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11, color="#555555", fillcolor="#F4F6F8", margin="0.14,0.07"];
+  edge  [color="#555555", arrowsize=0.7, fontname="Helvetica", fontsize=9];
+
+  subgraph cluster_offline {
+    label="A. Development pipeline  (run_pipeline.py runs steps 00-07 for each dataset version)"; style="rounded"; color="#4A78B5"; fontcolor="#2C4F80";
+    zip   [label="Roboflow export (.zip)\nor synthetic.py generator", shape=folder, fillcolor="#FFF6DD"];
+    s00   [label="00_prepare_real.py\nframe-gap leakage audit;\nbuild predefined + block splits\n[dataset.py]"];
+    s01   [label="01_data_audit.py\nclass counts, box sizes,\nnear-duplicate check\n[dataset.py]"];
+    s02   [label="02_train_detectors.py\nYOLOv8n: A pretrained, B from scratch\n(GPU, early stopping)\n[detector.py]"];
+    s03   [label="03_evaluate.py\nAP / mAP, tray decision,\nthresholds from validation, bootstrap CIs;\nbaseline C = features + random forest\n[metrics.py, decision.py, features.py, baseline.py]"];
+    s04   [label="04_robustness.py\nexposure, colour, glare,\nblur, noise, JPEG\n[robustness.py]"];
+    s05   [label="05_performance.py\nlatency vs resolution, FLOPs,\nroofline, profiling, memory\n[performance.py]"];
+    s07   [label="07_operating_points.py\ncatch rate vs false-reject trade-off"];
+    s06   [label="06_summary.py\nresults/<dataset>/SUMMARY.md"];
+    rep   [label="Report figures + tables\n(results/<dataset>/)", shape=note, fillcolor="#E8F3E8"];
+    tests [label="tests/ (80 pytest tests)\n+ pdoc HTML docs", shape=note, fillcolor="#E8F3E8"];
+    zip -> s00 -> s01 -> s02 -> s03;
+    s03 -> s04; s03 -> s05; s03 -> s07;
+    s04 -> s06; s05 -> s06; s07 -> s06;
+    s06 -> rep; s06 -> tests [style=invis]; {rank=same; rep; tests;}
+    s02 -> wts [style=dashed];
+    wts   [label="models/<dataset>/\nyolo_pretrained.pt", shape=cylinder, fillcolor="#FFF6DD"];
+  }
+
+  subgraph cluster_online {
+    label="B. Inspection at run time  (rasherqc inspect, cli.py -> report.py)"; style="rounded"; color="#3C8D5A"; fontcolor="#2A6640";
+    img   [label="Tray photo (RGB, 720 x 540)", shape=folder, fillcolor="#FFF6DD"];
+    val   [label="Input check\nio.validate_image()", shape=diamond, fillcolor="#FDEDEC", margin="0.04,0.04"];
+    uns   [label="UNSUPPORTED_INPUT\n+ reason", fillcolor="#FDEDEC"];
+    det   [label="YOLOv8n detector\ndetector.Detector.predict()\nboxes + confidences"];
+    dec   [label="Tray score s = highest confidence\ndecision.decide()", shape=diamond, fillcolor="#EEF4FB", margin="0.04,0.04"];
+    pass  [label="PASS\ns < t_low", fillcolor="#E8F3E8"];
+    revw  [label="REVIEW\nt_low <= s < t_fail", fillcolor="#FFF6DD"];
+    fail  [label="FAIL\ns >= t_fail", fillcolor="#FDEDEC"];
+    out   [label="results.json, annotated images,\nsummary.html  (report.py)", shape=note, fillcolor="#E8F3E8"];
+    img -> val;
+    val -> uns [label=" no"];
+    val -> det [label=" yes"];
+    det -> dec;
+    dec -> pass; dec -> revw; dec -> fail;
+    pass -> out; revw -> out; fail -> out; uns -> out;
+  }
+  wts -> det [style=dashed, label=" trained weights\n + thresholds", constraint=false];
+}

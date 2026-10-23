@@ -14,6 +14,22 @@ Detects and localises **placement and packaging defects** in top-view images of 
 | **Key result** | On unseen trays (leakage-aware split) the pretrained detector reaches AP@0.5 0.87 (`unsealed`) / 0.70 (`packaging-error`) and tray ROC AUC 0.86; catching ~90 % of defective trays costs ~41 % false rejects. Runs in 63 ms/tray on a laptop CPU (budget 1,000 ms). The predefined Roboflow split leaks (test frames are 2–3 video frames from training frames) — see report §2.2 and §5.4. |
 | **Report** | [`docs/REPORT.md`](docs/REPORT.md) · results tables: [`results/<dataset>/SUMMARY.md`](results/) · API docs: [`docs/api/index.html`](docs/api/index.html) · test report: [`results/test_report.html`](results/test_report.html) |
 
+### How the code fits together
+
+![Code flowchart](docs/img/code_flow.png)
+
+**A** is the development pipeline: it builds the datasets, trains and evaluates the models, and writes every result and figure. **B** is what runs on the line: each tray photo is checked, scored by the trained detector, and given a decision. (Source: [`docs/img/code_flow.dot`](docs/img/code_flow.dot), Graphviz.)
+
+### Where each assessment criterion is addressed
+
+| Criterion | Where to look |
+|---|---|
+| Engineering problem, inputs and outputs | Report §1–2; input/output table in report §2.1; `rasherqc.io.validate_image` for unsupported inputs |
+| Repository structure, commits, README | This README; layout in §4; numbered pipeline in §3; feature branches merged into `main` |
+| Comments, docstrings, HTML docs | Google-style docstrings (Args / Returns / Raises) in `src/rasherqc/`; HTML docs in [`docs/api/`](docs/api/index.html), rebuilt by CI |
+| Validation and credibility | Report §5; 80 tests ([`results/test_report.html`](results/test_report.html)); synthetic ground truth; leakage-aware block split; bootstrap CIs |
+| Justification of the computational approach | Report §3–4 and §6: baseline C, pretrained vs scratch, latency, FLOPs and roofline, memory, robustness |
+
 ---
 
 ## 1. Quick start
